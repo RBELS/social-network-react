@@ -1,0 +1,11 @@
+.h {
+    color: grey;
+}
+
+.dialogs {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    grid-template-areas: "l r";
+    grid-template-rows: 1fr;
+    height: 100%;
+}

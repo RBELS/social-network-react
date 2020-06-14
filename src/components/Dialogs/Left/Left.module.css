@@ -1,0 +1,7 @@
+.left {
+    grid-area: l;
+}
+
+.left a {
+    text-decoration: none;
+}

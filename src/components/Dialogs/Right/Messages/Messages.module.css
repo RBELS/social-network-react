@@ -1,0 +1,17 @@
+.msgs {
+    height: 80vh;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+    scroll-behavior: smooth;
+}
+
+.msgs::-webkit-scrollbar {
+    width: 10px;
+    height: auto;
+}
+
+.msgs::-webkit-scrollbar-thumb {
+    background-color: rgb(216, 216, 216);
+    border-radius: 10px;
+}

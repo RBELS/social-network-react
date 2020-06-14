@@ -1,0 +1,33 @@
+.desc {
+    margin-left: 30px;
+    color: grey;
+}
+
+.name {
+    font-size: 40px;
+    font-family: Arial;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.dob,
+.city,
+.edu,
+.website,
+.country {
+    text-align: left;
+    font-size: 24px;
+}
+
+.bt {
+    color: white;
+    font-family: Arial;
+    background-color: rgb(158, 34, 158);
+    width: 80px;
+    margin: 0px;
+    padding: 3px;
+    margin-bottom: 10px;
+    user-select: none;
+    cursor: pointer;
+}

@@ -1,0 +1,36 @@
+.postForm {
+    padding: 30px;
+}
+
+.postTitle {
+    font-family: Arial;
+    font-size: 30px;
+    text-align: left;
+    color: grey;
+}
+
+#data {
+    resize: none;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(216, 216, 216);
+    border: none;
+    margin: 10px 0px;
+    font-family: Arial;
+    font-size: 20px;
+    color: grey;
+    cursor: text;
+}
+
+.bt {
+    width: 100px;
+    background-color: #FFE800;
+    box-shadow: none;
+    margin-left: calc(100% - 100px - 10px);
+    font-family: Arial;
+    font-size: 20px;
+    color: grey;
+    padding: 7px;
+    cursor: pointer;
+    user-select: none;
+}

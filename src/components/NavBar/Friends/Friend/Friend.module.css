@@ -1,0 +1,21 @@
+.ava {
+    width: 30px;
+    background-color: grey;
+    border-radius: 30px;
+}
+
+.name {
+    color: white;
+    font-family: Arial;
+    font-size: 10px;
+}
+
+.user {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.user:hover {
+    background-color: cornflowerblue;
+}

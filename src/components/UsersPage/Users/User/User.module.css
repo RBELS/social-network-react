@@ -1,0 +1,69 @@
+.main {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.ava {
+    background-color: grey;
+    border-radius: 1000px;
+    width: 80px;
+    cursor: pointer;
+}
+
+.followBt {
+    color: white;
+    font-family: Arial;
+    background-color: rgb(158, 34, 158);
+    width: 80px;
+    margin: 0px auto;
+    padding: 3px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.avaFollow {
+    width: 14%;
+}
+
+.info {
+    width: 84%;
+    /* background-color: rgb(202, 202, 202); */
+    border-radius: 20px;
+    display: flex;
+    cursor: pointer;
+    border: 3px solid rgb(202, 202, 202);
+}
+
+.nameInfo {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 14px;
+}
+
+.loc {
+    border-left: 3px solid rgb(202, 202, 202);
+    width: 10%;
+    word-wrap: break-word;
+    color: grey;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 27px 5px;
+    text-align: center;
+}
+
+.name {
+    color: grey;
+    font-family: Arial;
+    font-size: 20px;
+}
+
+.comm {
+    font-family: Arial;
+    font-size: 18px;
+    color: grey;
+}

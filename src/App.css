@@ -1,0 +1,40 @@
+.App {
+    text-align: center;
+    display: grid;
+    grid-template-areas: "h h" "n p";
+    grid-template-rows: 60px calc(100vh - 60px);
+    grid-template-columns: 2fr 10fr;
+    grid-gap: 10px;
+    /* width: 60%; */
+    margin: 0px auto;
+}
+
+.app-wrapper-content {
+    background-color: white;
+    grid-area: p;
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    overflow: scroll;
+}
+
+.app-wrapper-content::-webkit-scrollbar {
+    width: 0px;
+    height: auto;
+}
+
+.app-wrapper-content::-webkit-scrollbar-thumb {
+    background-color: rgb(216, 216, 216);
+    border-radius: 10px;
+}
+
+@media screen and (min-width:1300px) {
+    .App {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width:1300px) {
+    .App {
+        width: 100%;
+    }
+}

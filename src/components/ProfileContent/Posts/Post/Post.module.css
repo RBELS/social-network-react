@@ -1,0 +1,40 @@
+.post {
+    display: flex;
+    background-color: rgb(216, 216, 216);
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.avatar {
+    margin: 0px 10px;
+    border-radius: 50%;
+    background-color: white;
+    height: 80px;
+    align-self: flex-start;
+}
+
+.avaPText {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.text {
+    align-self: flex-start;
+}
+
+.likes {
+    height: 80%;
+    align-items: center;
+    display: flex;
+    padding: 10px;
+    align-self: flex-start;
+}
+
+.likeImg {
+    height: 80px;
+}

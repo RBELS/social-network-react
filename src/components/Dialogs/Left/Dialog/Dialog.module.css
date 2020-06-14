@@ -1,0 +1,25 @@
+.dialog {
+    display: block;
+    background-color: rgb(231, 231, 231);
+    width: 80%;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 20px;
+    margin: 10px auto;
+    text-align: left;
+}
+
+.name {
+    display: inline;
+    color: grey;
+}
+
+.dialog li {
+    color: yellow;
+}
+
+.active {
+    padding: 30px;
+    transition: padding ease 1s 0s;
+}

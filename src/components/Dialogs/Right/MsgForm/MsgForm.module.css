@@ -1,0 +1,30 @@
+.msgForm {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.text {
+    resize: none;
+    height: 80px;
+    width: 80%;
+    background-color: rgb(216, 216, 216);
+    border: none;
+    font-family: Arial;
+    font-size: 20px;
+    color: grey;
+    cursor: text;
+}
+
+.sendBt {
+    width: 10%;
+    background-color: rgb(158, 34, 158);
+    text-align: center;
+    padding: 26px 10px;
+    font-family: Arial;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}

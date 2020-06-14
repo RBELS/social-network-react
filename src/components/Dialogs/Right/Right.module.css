@@ -1,0 +1,26 @@
+.right {
+    grid-area: r;
+    border-left: 1px solid purple;
+    max-height: 100vh - 60px;
+}
+
+
+/**********************************************/
+
+.msgs {
+    height: 80vh;
+    overflow: scroll;
+}
+
+.msgs::-webkit-scrollbar {
+    width: 10px;
+    height: auto;
+}
+
+.msgs::-webkit-scrollbar-thumb {
+    background-color: rgb(216, 216, 216);
+    border-radius: 10px;
+}
+
+
+/**********************************************/

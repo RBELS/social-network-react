@@ -1,0 +1,19 @@
+.div {
+    display: inline-block;
+}
+
+.error input {
+    border: 2px solid red;
+}
+
+.input {
+    margin: 10px;
+}
+
+.errorSpan {
+    color: red;
+}
+
+.validatingSpan {
+    color: rgb(86, 0, 107);
+}

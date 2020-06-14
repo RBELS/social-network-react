@@ -1,0 +1,23 @@
+.form {
+    font-family: Arial;
+    font-size: 20px;
+    padding: 18px;
+    float: right;
+    color: white;
+}
+
+.bt {
+    font-family: Arial;
+    font-size: 20px;
+    padding: 10px;
+    float: right;
+    color: grey;
+    background-color: #FFE800;
+    margin-top: 8px;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.bt:hover {
+    background-color: yellow;
+}

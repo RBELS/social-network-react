@@ -1,0 +1,22 @@
+.nav {
+    background-color: #8B42D6;
+    grid-area: n;
+}
+
+.nav a {
+    font-family: Arial;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px 0px;
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+.nav a:hover {
+    background-color: cornflowerblue;
+}
+
+.nav a.active {
+    text-decoration: underline;
+}
