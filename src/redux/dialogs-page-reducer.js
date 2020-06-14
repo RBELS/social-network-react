@@ -6,7 +6,8 @@ const ADD_MESSAGE = "SEND-MESSAGE",
     SET_MESSAGES = "SET-MESSAGES",
     APPEND_MESSAGES = "APPEND-DIALOGS",
     SET_TOTAL_PAGES = "SET-TOTAL-PAGES",
-    SET_FETCHING = "SET-FETCHING";
+    SET_FETCHING = "SET-FETCHING",
+    IF_FIRST_MESSAGE = "IF_FIRST_MESSAGE";
 
 let initialState = {
     dialogs: [],
@@ -49,7 +50,7 @@ const dialogsPageReducer = (state = initialState, action) => {
             right: {
                 ...state.right,
                 messages: action.messages,
-                lastPK: action.messages[0].pk
+                lastPK: action.messages[0] == undefined ? 10000000 : action.messages[0].pk
             }
         }
     } else if (action.type == APPEND_MESSAGES) {
@@ -76,6 +77,13 @@ const dialogsPageReducer = (state = initialState, action) => {
                 isFetching: action.isFetching
             }
         }
+    } else if (action.type == IF_FIRST_MESSAGE) {
+        if (state.right.messages.length == 1) {
+            return {
+                ...state,
+                dialogs: [...state.dialogs, { pk: state.right.messages[0].pk, written: state.right.messages[0].recipient, name: state.right.messages[0].rName }]
+            }
+        }
     }
 
     return state;
@@ -89,6 +97,7 @@ export const setMessagesAC = messages => ({ type: SET_MESSAGES, messages });
 export const appendMessagesAC = messages => ({ type: APPEND_MESSAGES, messages });
 export const setTotalPagesAC = total => ({ type: SET_TOTAL_PAGES, total });
 export const setFetchingAC = isFetching => ({ type: SET_FETCHING, isFetching });
+export const appendDialogsIfNeeded = () => ({ type: IF_FIRST_MESSAGE });
 
 export const getDialogsTC = () => dispatch => {
     dialogsAPI.getDialogs().then(response => {
@@ -119,14 +128,14 @@ export const appendMessagesTC = (page, pageNum, recipient, pk) => dispatch => {
 export const sendMessageTC = (recipient, message) => dispatch => {
     // console.log(recipient + " " + message);
     dialogsAPI.sendMessage(recipient, message).then(response => {
-        debugger
         if (!response.success) {
             alert("Error!");
         } else {
             dispatch(addMessageAC(response.message));
+            dispatch(appendDialogsIfNeeded());
         }
+        dispatch(onNewMessageTextChangeActionCreator(""));
     });
-    dispatch(onNewMessageTextChangeActionCreator(""));
 }
 
 

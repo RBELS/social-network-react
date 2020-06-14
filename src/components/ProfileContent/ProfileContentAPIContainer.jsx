@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ProfileContent from './ProfileContent';
-import { setProfileAC, getUserThunkCretor, setStatusTC, setStatusAC, toggleFollowAC } from '../../redux/profile-page-reducer';
+import { setProfileAC, getUserThunkCretor, setStatusTC, setStatusAC } from '../../redux/profile-page-reducer';
 import { withRouter } from "react-router-dom";
 import { compose } from 'redux';
 import { followTC, unfollowTC } from '../../redux/users-page-reducer';
@@ -17,12 +17,9 @@ class ProfileContentAPIContainer extends React.Component {
     }
 
     componentWillReceiveProps(newProps) {
-        if(newProps.logged != this.props.logged) {
-            this.props.getUser("");
-        }
 
 
-        if(newProps.match.params.userid != this.props.match.params.userid) {
+        if(newProps.match.params.username != this.props.match.params.username) {
             this.props.getUser("");
         }
     }
@@ -43,7 +40,7 @@ class ProfileContentAPIContainer extends React.Component {
         if(!this.props.logged) {
             return <FetchingSign />
         } else {
-            return <ProfileContent followAction={this.props.profile.followed ? this.unfollow : this.follow} username={this.props.match.params.username} 
+            return <ProfileContent myUsername={this.props.myUsername} followAction={this.props.profile.followed ? this.unfollow : this.follow} username={this.props.match.params.username} 
             sendStatus={this.props.sendStatus} setStatus={this.props.setStatus} profile={this.props.profile}/>;
         }
     }
@@ -53,7 +50,8 @@ let mapStateToProps = state => {
     return {
         profile: state.profilePage.profile,
         blocked: state.usersPage.followsToBlock,
-        logged: state.auth.logged
+        logged: state.auth.logged,
+        myUsername: state.auth.username
     };
 }
 

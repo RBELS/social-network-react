@@ -24,10 +24,13 @@
     color: white;
     font-family: Arial;
     background-color: rgb(158, 34, 158);
-    width: 80px;
-    margin: 0px;
-    padding: 3px;
+    margin-right: 10px;
+    padding: 8px;
     margin-bottom: 10px;
     user-select: none;
     cursor: pointer;
+}
+
+.buttons {
+    display: flex;
 }

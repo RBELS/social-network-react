@@ -23,7 +23,7 @@ const ProfileContent = (props) => {
             
             <div className={s.flex}>
                 <Avatar imgSrc={props.profile.imgSrc}/>
-                <Desc followAction={props.followAction} username={props.username} sendStatus={props.sendStatus} setStatus={props.setStatus} profile={props.profile}/>
+                <Desc myUsername={props.myUsername} followAction={props.followAction} username={props.username} sendStatus={props.sendStatus} setStatus={props.setStatus} profile={props.profile}/>
             </div>
 
             <PostFormContainer />

@@ -11,7 +11,6 @@ class Status extends React.Component {
     };
 
     componentDidMount() {
-        debugger
         if(!this.props.username) {
             this.setState({ canEditStatus: true });
         }
