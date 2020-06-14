@@ -9,11 +9,13 @@ const User = (props) => {
         <div className={s.main}>
             <div className={s.avaFollow}>
                 <img className={s.ava} src={props.imgSrc}/>
+                {props.myUsername != props.username &&
                 <div className={s.followBt} onClick={ () => {
                     props.followAction(props.username);
                 } }>
                     {props.followText}
-                </div>
+                </div>}
+                
             </div>
 
             <div className={s.info}>

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { toggleFetchingAC, getUsersTC, followTC, unfollowTC, deleteUsersAC, toggleFirstAC, setPageAC } from "../../../redux/users-page-reducer";
+import { toggleFetchingAC, getUsersTC, followTC, unfollowTC, deleteUsersAC, setPageAC } from "../../../redux/users-page-reducer";
 import UsersAPIComponent from "./UsersAPIComponent";
 import { withAuthRedirect } from "../../AuthRedirect/withAuthRedirect";
 import ShowMoreButtonContainer from "../ShowMoreButton/ShowMoreButtonContainer";
@@ -15,7 +15,8 @@ let mapStateToProps = (state) => {
         isFetching: state.usersPage.isFetching,
         blocked: state.usersPage.followsToBlock,
         logged: state.auth.logged,
-        first: state.usersPage.first
+        first: state.usersPage.first,
+        myUsername: state.auth.username
     };
 }
 
@@ -52,7 +53,7 @@ export default class extends React.Component {
     render() {
         
         return (<>
-            <UsersContainer updPage={this.updPage} incrPage={this.incrPage} {...this.state}/>
+            <UsersContainer myUsername={this.props.myUsername} updPage={this.updPage} incrPage={this.incrPage} {...this.state}/>
             <ShowMoreButtonContainer incrPage={this.incrPage} {...this.state}/>
         </>);
     }

@@ -10,7 +10,8 @@ let initialState = {
     logged: false,
     uText: "",
     pText: "",
-    name: ""
+    name: "",
+    username: undefined
 };
 
 const authReducer = (state = initialState, action) => {
@@ -34,7 +35,8 @@ const authReducer = (state = initialState, action) => {
     } else if (action.type == SET_NAME) {
         return {
             ...state,
-            name: action.newName
+            name: action.newName,
+            username: action.newUsername
         }
     }
 
@@ -45,7 +47,7 @@ const authReducer = (state = initialState, action) => {
 export const toggleLoginAC = (logged) => ({ type: TOGGLE_LOGIN, logged });
 export const onUTextChangeAC = (newText) => ({ type: ON_U_TEXT_CHANGE, newText });
 export const onPTextChangeAC = (newText) => ({ type: ON_P_TEXT_CHANGE, newText });
-export const changeNameAC = (newName) => ({ type: SET_NAME, newName });
+export const changeNameAC = (newName, newUsername) => ({ type: SET_NAME, newName, newUsername });
 
 export const amLoggedTC = (logged) => {
     return dispatch => {
@@ -84,7 +86,7 @@ export const logoutTC = () => {
 export const getNameTC = () => {
     return dispatch => {
         authAPI.getName().then(response => {
-            dispatch(changeNameAC(response.name));
+            dispatch(changeNameAC(response.name, response.username));
         });
     }
 }

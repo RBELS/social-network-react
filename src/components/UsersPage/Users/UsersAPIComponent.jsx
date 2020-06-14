@@ -47,7 +47,7 @@ class UsersApiComponent extends React.Component {
 
     render() {
         return(
-            <Users addToBlocked={this.props.addToBlocked} deleteFromBlocked={this.props.deleteFromBlocked} unfollow={this.unfollow} follow={this.follow} isFetching={this.props.isFetching} usersList={this.props.usersList} />
+            <Users myUsername={this.props.myUsername} addToBlocked={this.props.addToBlocked} deleteFromBlocked={this.props.deleteFromBlocked} unfollow={this.unfollow} follow={this.follow} isFetching={this.props.isFetching} usersList={this.props.usersList} />
         ); 
     }
 }

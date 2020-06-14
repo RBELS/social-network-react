@@ -2,8 +2,8 @@ import Axios from 'axios';
 
 const instance = Axios.create({
     withCredentials: true,
-    // baseURL: "http://192.168.0.109/"
-    baseURL: "http://25.70.163.92/"
+    baseURL: "http://192.168.0.109/"
+        // baseURL: "http://25.70.163.92/"
 });
 
 export const getUsers = (currentPage, usersPageEls, mode) => {
