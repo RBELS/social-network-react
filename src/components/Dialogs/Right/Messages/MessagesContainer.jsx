@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import { setMessagesTC, appendMessagesTC } from '../../../../redux/dialogs-page-reducer';
+import { setMessagesTC, appendMessagesTC, pingMessagesTC } from '../../../../redux/dialogs-page-reducer';
 import Messages from "./Messages";
 
 let mapStateToProps = (state) => {
@@ -22,7 +22,13 @@ class MessagesClass extends React.Component {
         recipient: this.props.match.params.username == undefined ? undefined : this.props.match.params.username
     }
 
-    componentDidMount() {  
+    interval;
+
+    componentDidMount() {
+        this.interval = setInterval(() => {
+            // console.log(this.state.recipient);
+            this.props.pingMessages(this.state.recipient);
+        },1000);
         this.props.getMessages(this.state.page,this.state.pageNum,this.state.recipient);
     }
 
@@ -34,6 +40,10 @@ class MessagesClass extends React.Component {
             this.setState({ recipient: newProps.match.params.username, page:1 });
             this.props.getMessages(1,this.state.pageNum,newProps.match.params.username);
         }
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
     changePage = (page) => {
@@ -52,6 +62,6 @@ class MessagesClass extends React.Component {
 }
 
 
-export default compose(connect(mapStateToProps, { getMessages: setMessagesTC, appendMessages: appendMessagesTC }),
+export default compose(connect(mapStateToProps, { getMessages: setMessagesTC, appendMessages: appendMessagesTC, pingMessages: pingMessagesTC }),
     withRouter
 )(MessagesClass);

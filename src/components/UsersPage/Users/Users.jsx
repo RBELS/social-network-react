@@ -6,7 +6,7 @@ const Users = (props) => {
     
     return (
         <div>
-            {props.usersList.map(u => <User myUsername={props.myUsername} username={u.username} addToBlocked={props.addToBlocked} deleteFromBlocked={props.deleteFromBlocked}  followAction={u.followed ? props.unfollow : props.follow} id={u.id} username={u.username} followText={u.followed ? "Unfollow" : "Follow"} name={u.name} 
+            {props.usersList.map(u => <User key={u.pk} myUsername={props.myUsername} username={u.username} addToBlocked={props.addToBlocked} deleteFromBlocked={props.deleteFromBlocked}  followAction={u.followed ? props.unfollow : props.follow} username={u.username} followText={u.followed ? "Unfollow" : "Follow"} name={u.name} 
             country={u.country} city={u.city} status={u.status} imgSrc={u.imgSrc} toggleFollow={props.toggleFollow}/> )}
 
 

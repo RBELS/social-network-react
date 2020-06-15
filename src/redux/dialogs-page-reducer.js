@@ -8,7 +8,8 @@ const ADD_MESSAGE = "SEND-MESSAGE",
     SET_TOTAL_PAGES = "SET-TOTAL-PAGES",
     SET_FETCHING = "SET-FETCHING",
     IF_FIRST_MESSAGE = "IF_FIRST_MESSAGE",
-    SET_UNREAD_TO_READ = "SET_UNREAD_TO_READ";
+    SET_UNREAD_TO_READ = "SET_UNREAD_TO_READ",
+    PUSH_MESSAGES = "PUSH_MESSAGES";
 
 let initialState = {
     dialogs: [],
@@ -95,6 +96,14 @@ const dialogsPageReducer = (state = initialState, action) => {
                 return d;
             })
         }
+    } else if (action.type == PUSH_MESSAGES) {
+        return {
+            ...state,
+            right: {
+                ...state.right,
+                messages: [...action.messages, ...state.right.messages]
+            }
+        }
     }
 
     return state;
@@ -110,6 +119,7 @@ export const setTotalPagesAC = total => ({ type: SET_TOTAL_PAGES, total });
 export const setFetchingAC = isFetching => ({ type: SET_FETCHING, isFetching });
 export const appendDialogsIfNeededAC = () => ({ type: IF_FIRST_MESSAGE });
 export const setUnreadToReadAC = recipient => ({ type: SET_UNREAD_TO_READ, recipient });
+export const pushMessagesAC = messages => ({ type: PUSH_MESSAGES, messages });
 
 export const getDialogsTC = () => dispatch => {
     dialogsAPI.getDialogs().then(response => {
@@ -148,6 +158,17 @@ export const sendMessageTC = (recipient, message) => dispatch => {
             dispatch(appendDialogsIfNeededAC());
         }
         dispatch(onNewMessageTextChangeActionCreator(""));
+    });
+}
+
+export const pingMessagesTC = recipient => dispatch => {
+    dialogsAPI.pingMessages(recipient).then(response => {
+        if (response != 0) {
+            console.log("New messages!");
+            dialogsAPI.getUnreadMessages(recipient).then(response => {
+                dispatch(pushMessagesAC(response));
+            });
+        }
     });
 }
 

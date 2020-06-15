@@ -11,9 +11,18 @@ let mapStateToProps = (state) => {
 
 class LeftContainer extends React.Component {
 
+    interval;
+
     componentDidMount() {
         this.props.getDialogs();
+        this.interval = setInterval(() => {
+            this.props.getDialogs();
+        },1000);
     }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    } 
 
     render() {
         return <Left dialogsEls={this.props.dialogsEls}/>;
