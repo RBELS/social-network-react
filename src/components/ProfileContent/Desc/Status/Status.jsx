@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './Status.module.css';
-import { withRouter } from 'react-router-dom';
 
 class Status extends React.Component {
     

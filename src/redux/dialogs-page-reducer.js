@@ -7,7 +7,8 @@ const ADD_MESSAGE = "SEND-MESSAGE",
     APPEND_MESSAGES = "APPEND-DIALOGS",
     SET_TOTAL_PAGES = "SET-TOTAL-PAGES",
     SET_FETCHING = "SET-FETCHING",
-    IF_FIRST_MESSAGE = "IF_FIRST_MESSAGE";
+    IF_FIRST_MESSAGE = "IF_FIRST_MESSAGE",
+    SET_UNREAD_TO_READ = "SET_UNREAD_TO_READ";
 
 let initialState = {
     dialogs: [],
@@ -84,6 +85,16 @@ const dialogsPageReducer = (state = initialState, action) => {
                 dialogs: [...state.dialogs, { pk: state.right.messages[0].pk, written: state.right.messages[0].recipient, name: state.right.messages[0].rName }]
             }
         }
+    } else if (action.type == SET_UNREAD_TO_READ) {
+        return {
+            ...state,
+            dialogs: state.dialogs.map(d => {
+                if (d.written == action.recipient) {
+                    d.unread = 0;
+                }
+                return d;
+            })
+        }
     }
 
     return state;
@@ -97,7 +108,8 @@ export const setMessagesAC = messages => ({ type: SET_MESSAGES, messages });
 export const appendMessagesAC = messages => ({ type: APPEND_MESSAGES, messages });
 export const setTotalPagesAC = total => ({ type: SET_TOTAL_PAGES, total });
 export const setFetchingAC = isFetching => ({ type: SET_FETCHING, isFetching });
-export const appendDialogsIfNeeded = () => ({ type: IF_FIRST_MESSAGE });
+export const appendDialogsIfNeededAC = () => ({ type: IF_FIRST_MESSAGE });
+export const setUnreadToReadAC = recipient => ({ type: SET_UNREAD_TO_READ, recipient });
 
 export const getDialogsTC = () => dispatch => {
     dialogsAPI.getDialogs().then(response => {
@@ -110,6 +122,7 @@ export const setMessagesTC = (page, pageNum, recipient) => dispatch => {
     dialogsAPI.getMessages(page, pageNum, recipient).then(response => {
         dispatch(setMessagesAC(response));
         dispatch(setFetchingAC(false));
+        dispatch(setUnreadToReadAC(recipient));
     });
 
     dialogsAPI.getTotalMessages(recipient, pageNum).then(response => {
@@ -132,7 +145,7 @@ export const sendMessageTC = (recipient, message) => dispatch => {
             alert("Error!");
         } else {
             dispatch(addMessageAC(response.message));
-            dispatch(appendDialogsIfNeeded());
+            dispatch(appendDialogsIfNeededAC());
         }
         dispatch(onNewMessageTextChangeActionCreator(""));
     });
