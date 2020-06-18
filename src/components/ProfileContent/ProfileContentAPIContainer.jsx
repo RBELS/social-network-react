@@ -5,11 +5,15 @@ import { setProfileAC, getUserThunkCretor, setStatusTC, setStatusAC } from '../.
 import { withRouter } from "react-router-dom";
 import { compose } from 'redux';
 import { followTC, unfollowTC } from '../../redux/users-page-reducer';
-import FetchingSign from '../FetchingSign/FetchingSign';
 import { withAuthRedirect } from '../AuthRedirect/withAuthRedirect';
 
 
 class ProfileContentAPIContainer extends React.Component {
+
+    shouldComponentUpdate(newProps) {
+        let condition = newProps != this.props;
+        return condition;
+    }
 
     componentDidMount = () => {
         let username = this.props.match.params.username;
@@ -17,7 +21,6 @@ class ProfileContentAPIContainer extends React.Component {
     }
 
     componentWillReceiveProps(newProps) {
-
 
         if(newProps.match.params.username != this.props.match.params.username) {
             this.props.getUser("");
@@ -35,14 +38,11 @@ class ProfileContentAPIContainer extends React.Component {
         if(this.props.blocked.some(u => u == username)) return;
         this.props.unfollow(username);
     }
-
+    
     render() {
-        if(!this.props.logged) {
-            return <FetchingSign />
-        } else {
-            return <ProfileContent myUsername={this.props.myUsername} followAction={this.props.profile.followed ? this.unfollow : this.follow} username={this.props.match.params.username} 
+        console.log(this.props)
+        return <ProfileContent myUsername={this.props.myUsername} followAction={this.props.profile.followed ? this.unfollow : this.follow} username={this.props.match.params.username} 
             sendStatus={this.props.sendStatus} setStatus={this.props.setStatus} profile={this.props.profile}/>;
-        }
     }
 }
 

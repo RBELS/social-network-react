@@ -29,6 +29,9 @@ export const initAppTC = logged => dispatch => {
     promise.then(() => {
         dispatch(initAC());
     });
+    // Promise.all([promise, getNameP]).then(() => {
+    //     dispatch(initAC());
+    // });
 }
 
 

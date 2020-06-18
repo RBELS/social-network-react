@@ -9,7 +9,6 @@ const Desc = (props) => {
     }
     
     let doNotShowButtons = props.username == undefined || props.username == props.myUsername;
-
     return (
         <div className={s.desc}>
             <div className={s.name}>{props.profile.name}</div>
@@ -23,6 +22,10 @@ const Desc = (props) => {
                     <div className={s.bt}>Start Dialog</div>
                 </NavLink>
             </div>}
+
+            {doNotShowButtons && <NavLink to="/edit">
+                <div className={s.bt}>Edit Profile</div>
+            </NavLink>}
 
             <Status username={props.username} sendStatus={props.sendStatus} setStatus={props.setStatus} status={props.profile.status}/>
             <div className={s.dob}>Date of Birth: {props.profile.dob}</div>

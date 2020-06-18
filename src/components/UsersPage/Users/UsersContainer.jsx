@@ -4,12 +4,13 @@ import UsersAPIComponent from "./UsersAPIComponent";
 import { withAuthRedirect } from "../../AuthRedirect/withAuthRedirect";
 import ShowMoreButtonContainer from "../ShowMoreButton/ShowMoreButtonContainer";
 import React from 'react';
+import { getUsers } from "../../../redux/selectors/profile-selectors";
 
 
 let mapStateToProps = (state) => {
     
     return {
-        usersList: state.usersPage.users,
+        usersList: getUsers(state),
         // currentPage: state.usersPage.currentPage,
         // usersPageEls: state.usersPage.usersPageEls,
         isFetching: state.usersPage.isFetching,
@@ -51,7 +52,7 @@ export default class extends React.Component {
     }
 
     render() {
-        
+        // console.log("render");
         return (<>
             <UsersContainer myUsername={this.props.myUsername} updPage={this.updPage} incrPage={this.incrPage} {...this.state}/>
             <ShowMoreButtonContainer incrPage={this.incrPage} {...this.state}/>
