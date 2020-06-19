@@ -40,7 +40,6 @@ class ProfileContentAPIContainer extends React.Component {
     }
     
     render() {
-        console.log(this.props)
         return <ProfileContent myUsername={this.props.myUsername} followAction={this.props.profile.followed ? this.unfollow : this.follow} username={this.props.match.params.username} 
             sendStatus={this.props.sendStatus} setStatus={this.props.setStatus} profile={this.props.profile}/>;
     }

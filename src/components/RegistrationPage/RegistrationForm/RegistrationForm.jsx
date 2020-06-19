@@ -36,7 +36,7 @@ const RegistrationForm = props => {
             <Field validate={ [requiredField, maxLength20, minLength3] } name="country" placeholder="country" component={Input} /><br />
 
             <label>Город:   </label>
-            <Field validate={ [requiredField, maxLength20] } name="city" placeholder="city" component={Input} /><br />
+            <Field validate={ [requiredField, maxLength20, minLength3] } name="city" placeholder="city" component={Input} /><br />
                 
             <label>Аватар:   </label>
             <Field validate={ [requiredField] } name="imgSrc" placeholder="img url" component={Input} /><br />

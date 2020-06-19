@@ -6,7 +6,6 @@ import s from "./ProfileContent.module.css"
 import PostFormContainer from './PostForm/PostFormContainer';
 import PostsContainer from './Posts/PostsContainer';
 import FetchingSign from '../FetchingSign/FetchingSign';
-import { withAuthRedirect } from '../AuthRedirect/withAuthRedirect';
 
 
 
