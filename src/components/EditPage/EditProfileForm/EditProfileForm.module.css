@@ -15,14 +15,3 @@
     display: inline-block;
     width: 200px;
 }
-
-.changeOther {
-    color: white;
-    font-family: Arial;
-    background-color: rgb(158, 34, 158);
-    margin-right: 10px;
-    padding: 8px;
-    margin-bottom: 10px;
-    user-select: none;
-    cursor: pointer;
-}

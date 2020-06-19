@@ -1,0 +1,15 @@
+.form {
+    margin: 20px auto;
+    text-align: left;
+    font-family: Arial;
+    width: 600px;
+}
+
+.form label {
+    display: inline-block;
+    width: 200px;
+}
+
+.form button {
+    margin: 10px;
+}

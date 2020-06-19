@@ -1,0 +1,16 @@
+.changeOther {
+    color: white;
+    font-family: Arial;
+    background-color: rgb(158, 34, 158);
+    padding: 8px;
+    margin-bottom: 10px;
+    user-select: none;
+    cursor: pointer;
+    width: 600px;
+}
+
+.container {
+    width: fit-content;
+    text-align: left;
+    margin: 0px auto;
+}

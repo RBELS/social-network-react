@@ -14,11 +14,6 @@ const minLength3 = minLength(3);
 const minLength8 = minLength(8);
 
 const EditProfileForm = props => {
-    useEffect(() => {
-        props.getProfile("");
-    }, []);
-
-
     return (
         <form onSubmit={props.handleSubmit} className={s.form}>
 
@@ -46,10 +41,7 @@ const EditProfileForm = props => {
             <label htmlFor="">Вебсайт:</label>
             <Field validate={[requiredField]} component={Input} placeholder="website" name="website"/><br/>
 
-            <div className={s.changeOther} onClick={() => { props.switchMode(2) }} >Изменить имя пользователя</div>
-            <div className={s.changeOther} onClick={() => { props.switchMode(3) }}>Изменить пароль</div>
-
-            <button>Изменить</button>
+            <button>Изменить профиль</button>
         </form>
     );
 }
@@ -63,7 +55,7 @@ const mapStateToProps = state => {
 
 
 export default compose(
-    connect(mapStateToProps, { getProfile: getUserThunkCretor }),
+    connect(mapStateToProps),
     reduxForm({form:"profileUpdate", enableReinitialize: true}),
     withAuthRedirect
 )(EditProfileForm);
